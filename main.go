@@ -20,6 +20,8 @@ func main() {
 		log.Fatal(err)
 	}
 
+
+	app.Use(handlers.WithAuthenticatedUser)
 	app.Get("/", handlers.HandleGetHome)
 
 	log.Fatal(app.Listen(os.Getenv("PORT")))
