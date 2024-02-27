@@ -2,7 +2,9 @@ package main
 
 import (
 	"log"
+	"os"
 
+	"github.com/OkO2451/TrackS/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
@@ -17,9 +19,11 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	log.Fatal(app.Listen(":3000"))
 
-	
+	app.Get("/", handlers.HandleGetHome)
+
+	log.Fatal(app.Listen(os.Getenv("PORT")))
+
 }
 
 func InitApp() (*fiber.App, error) {
