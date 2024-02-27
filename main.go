@@ -7,6 +7,7 @@ import (
 	"github.com/OkO2451/TrackS/handlers"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
+	"github.com/gofiber/fiber/v2/middleware/favicon"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/template/django/v3"
@@ -20,7 +21,7 @@ func main() {
 		log.Fatal(err)
 	}
 
-
+	app.Use(favicon.New(favicon.ConfigDefault))
 	app.Use(handlers.WithAuthenticatedUser)
 	app.Get("/", handlers.HandleGetHome)
 

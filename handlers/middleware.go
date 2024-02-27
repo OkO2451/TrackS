@@ -1,12 +1,12 @@
 package handlers
 
 import (
-	"log"
+	"fmt"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 func WithAuthenticatedUser(c *fiber.Ctx) error {
-	log.Default().Println("Authenticated user")
+	fmt.Printf("Stuff ltuff\n\n")
 	return c.Next()
 }
